@@ -2,9 +2,10 @@
   "name": "sentence-classification",
   "version": "1.0.0",
   "description": "Via universal sentence encoder and k-means",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "node index.js",
+    "rebuuild:ts": "npm rebuild @tensorflow/tfjs-node --build-from-source",
+    "start": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
