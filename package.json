@@ -4,7 +4,7 @@
   "description": "Via universal sentence encoder and k-means",
   "main": "src/index.js",
   "scripts": {
-    "rebuuild:ts": "npm rebuild @tensorflow/tfjs-node --build-from-source",
+    "rebuild:tsjs": "npm rebuild @tensorflow/tfjs-node --build-from-source",
     "start": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
