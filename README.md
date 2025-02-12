@@ -1,7 +1,15 @@
 # sentence-classification
 Via universal sentence encoder and k-means
 
-## Running the Application Without Docker
+## Running the Application Locally (Without Docker)
+Before running the application, it's recommended to rebuild the tensorflow-node for your environment.
+```shell
+## make sure you have the necessary packages installed.
+## If you're unsure about which packages are required, refer to the Dockerfile for guidance.  
+npm run rebuild:tsjs
+```
+
+Once the rebuild is complete
 ```shell
 npm install
 npm run start
