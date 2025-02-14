@@ -34,4 +34,6 @@ docker run -it --entrypoint /bin/bash -p 4544:4544 --env-file .env hermeslin/sen
 ```
 
 ## Building and Pushing the Docker Image to GCP via GitHub Actions
-To be continued...
+### Google authentication
+test
+
