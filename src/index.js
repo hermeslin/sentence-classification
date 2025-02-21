@@ -13,7 +13,7 @@ app.post("/classify", async (req, res) => {
         const { groupCount, sentences } = req.body;
         const response = await classification(sentences, groupCount);
 
-        res.status(200).send(response);
+        res.status(200).send({ data: response });
     } catch (e) {
         console.error(e);
         res.status(500).send({ message: "Internal Server Error" })
