@@ -128,7 +128,7 @@ jobs:
           env_vars: |
             NODE_ENV=production
             HTTP_PORT=8080
-            AUTH_HEADER_NAME=X-API-Token
+            AUTH_HEADER_NAME=${{ secrets.AUTH_HEADER_NAME }}
             AUTH_API_KEY=${{ secrets.AUTH_API_KEY }}
             MODEL_URL=${{ secrets.MODEL_URL }}
             VOCAB_URL=${{ secrets.VOCAB_URL }}
