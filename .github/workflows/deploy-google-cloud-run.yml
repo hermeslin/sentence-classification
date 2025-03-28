@@ -132,6 +132,7 @@ jobs:
             AUTH_API_KEY=${{ secrets.AUTH_API_KEY }}
             MODEL_URL=${{ secrets.MODEL_URL }}
             VOCAB_URL=${{ secrets.VOCAB_URL }}
+            GOOGLE_GEMINI_API_KEY=${{ secrets.GOOGLE_GEMINI_API_KEY }}
 
       # If required, use the Cloud Run url output in later steps
       - name: Show Output

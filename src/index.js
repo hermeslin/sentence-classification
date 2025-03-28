@@ -2,6 +2,8 @@ const express = require("express");
 const authorization = require("./middleware/authorization");
 const classification =require('./utils/sentence-classification');
 const httpConfig = require('./config/http');
+const googleConfig = require('./config/google');
+const { GoogleGenAI } = require('@google/genai');
 
 const app = express();
 
@@ -20,6 +22,30 @@ app.post("/classify", async (req, res) => {
     } catch (e) {
         console.error(e);
         res.status(500).send({ message: "Internal Server Error" })
+    }
+});
+
+app.post('/gemini/classify', async (req, res) => {
+    try {
+        const { question, data } = req.body;
+
+        if (! question || ! data) {
+            res.status(422).send({ message: "Contents required" });
+        }
+
+        const ai = new GoogleGenAI({ apiKey: googleConfig.gemini_api_key });
+        const response = await ai.models.generateContent({
+            model: "gemini-2.0-flash",
+            contents: [question, JSON.stringify(data)],
+            config: {
+                responseMimeType: 'application/json',
+            }
+        });
+
+        res.status(200).send(JSON.parse(response.text));
+    } catch (e) {
+        console.error(e);
+        res.status(500).send({ message: "Internal Server Error" });
     }
 });
 
