@@ -27,7 +27,7 @@ app.post("/classify", async (req, res) => {
 
 app.post('/gemini/classify', async (req, res) => {
     try {
-        const { question, data } = req.body;
+        const { question, data, config } = req.body;
 
         if (! question || ! data) {
             res.status(422).send({ message: "Contents required" });
@@ -37,9 +37,7 @@ app.post('/gemini/classify', async (req, res) => {
         const response = await ai.models.generateContent({
             model: "gemini-2.0-flash",
             contents: [question, JSON.stringify(data)],
-            config: {
-                responseMimeType: 'application/json',
-            }
+            config
         });
 
         res.status(200).send(JSON.parse(response.text));
