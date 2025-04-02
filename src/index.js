@@ -36,7 +36,7 @@ app.post('/gemini/classify', async (req, res) => {
         const ai = new GoogleGenAI({ apiKey: googleConfig.gemini_api_key });
         const response = await ai.models.generateContent({
             model: "gemini-2.0-flash",
-            contents: [question, JSON.stringify(data)],
+            contents: [question, data],
             config
         });
 
