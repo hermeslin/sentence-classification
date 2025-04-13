@@ -33,17 +33,21 @@ app.post('/gemini/classify', async (req, res) => {
             res.status(422).send({ message: "Contents required" });
         }
 
+        console.info(question);
+        console.info(data);
+        console.info(config);
         const ai = new GoogleGenAI({ apiKey: googleConfig.gemini_api_key });
         const response = await ai.models.generateContent({
             model: "gemini-2.0-flash",
-            contents: [question, JSON.stringify(data)],
-            config
+            contents: [question, JSON.stringify(data)]
         });
 
-        res.status(200).send(JSON.parse(response.text));
+        res.status(200).json({
+            message: response.text
+        });
     } catch (e) {
         console.error(e);
-        res.status(500).send({ message: "Internal Server Error" });
+        res.status(500).json({ message: "Internal Server Error" });
     }
 });
 
